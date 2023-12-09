@@ -1,0 +1,36 @@
+for each loop
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Math Function with forEach Loop</title>
+</head>
+<body>
+
+  <h1>Square of Numbers using forEach Loop:</h1>
+  
+  <ul id="numberList">
+    <!-- List will be populated by JavaScript -->
+  </ul>
+
+  <script>
+    // Array of numbers
+    var numbers = [1, 2, 3, 4, 5];
+    
+    // Function to calculate square of a number
+    function square(num) {
+      return num * num;
+    }
+
+    var numberList = document.getElementById("numberList");
+
+    // Using forEach to loop through the array and calculate squares
+    numbers.forEach(function(number) {
+      var listItem = document.createElement("li");
+      listItem.textContent = "Square of " + number + " is " + square(number);
+      numberList.appendChild(listItem);
+    });
+  </script>
+
+</body>
+</html>
