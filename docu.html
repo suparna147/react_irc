@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Example</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4285f4;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #3367d6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>DOM Example</h1>
+  <p>Click the button below to change the text:</p>
+
+  <button onclick="changeText()">Click me</button>
+
+  <p id="changeableText">Original Text</p>
+
+  <script>
+    // JavaScript for DOM manipulation
+    function changeText() {
+      var textElement = document.getElementById("changeableText");
+      textElement.textContent = "Text Changed!";
+      textElement.style.color = "red";
+    }
+  </script>
+
+</body>
+</html>
