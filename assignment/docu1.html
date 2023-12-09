@@ -1,0 +1,28 @@
+loop
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Loop Example</title>
+</head>
+<body>
+
+  <h1>Numbers from 1 to 5 using a for loop:</h1>
+  
+  <ul id="numberList">
+    <!-- List will be populated by JavaScript -->
+  </ul>
+
+  <script>
+    // JavaScript for loop to generate numbers and add them to the list
+    var numberList = document.getElementById("numberList");
+
+    for (var i = 1; i <= 5; i++) {
+      var listItem = document.createElement("li");
+      listItem.textContent = i;
+      numberList.appendChild(listItem);
+    }
+  </script>
+
+</body>
+</html>
