@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modules in HTML</title>
+</head>
+<body>
+
+  <h1>JavaScript Modules in HTML</h1>
+
+  <script type="module">
+
+    const module1 = (function() {
+      const greet = () => {
+        console.log('Hello! This is Module 1.');
+      };
+
+      return {
+        greet
+      };
+    })();
+
+    
+    const module2 = (function() {
+      const multiply = (a, b) => {
+        return a * b;
+      };
+
+      return {
+        multiply
+      };
+    })();
+
+    
+    module1.greet();
+    console.log(module2.multiply(5, 3));
+  </script>
+
+</body>
+</html>
