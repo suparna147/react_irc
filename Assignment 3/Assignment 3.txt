@@ -5,7 +5,7 @@ class ObjectComponent extends React.Component {
     super(props);
     this.state = {
       user: {
-        Name: 'Rochit R',
+        Name: 'Suparna S',
         age: 19,
       },
     };
