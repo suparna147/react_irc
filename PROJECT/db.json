@@ -1,0 +1,76 @@
+{
+  "posts": [
+    {
+      "name": "Lp",
+      "email": "lp@gmail.com",
+      "password": "lp123",
+      "id": 11
+    },
+    {
+      "name": "jaya",
+      "email": "jaya@gmail.com",
+      "password": "ja741",
+      "id": 12
+    },
+    {
+      "name": "Kruthag",
+      "email": "Kg@gmail.com",
+      "password": "Kg123",
+      "id": 13
+    },
+    {
+      "Name": "Lp",
+      "Email": "727722eucs094@skcet.ac.in",
+      "Password": "123456",
+      "id": 14
+    },
+    {
+      "Name": "Lp",
+      "Email": "727722eucs094@skcet.ac.in",
+      "Password": "123456",
+      "id": 15
+    },
+    {
+      "Name": "larwin",
+      "Email": "727722eucs095@skcet.ac.in",
+      "Password": "098",
+      "id": 16
+    },
+    {
+      "Name": "rahul",
+      "Email": "727722eucs132@skcet.ac.in",
+      "Password": "987",
+      "id": 17
+    },
+    {
+      "Name": "kavin",
+      "Email": "727722eucs084@skcet.ac.in",
+      "Password": "456",
+      "id": 18
+    },
+    {
+      "Name": "nigi",
+      "Email": "nigi@gmail.com",
+      "Password": "123",
+      "id": 19
+    },
+    {
+      "name": "mega",
+      "email": "727722eucs102@skcet.ac.in",
+      "password": "varshini_1820",
+      "id": 20
+    },
+    {
+      "name": "moni",
+      "email": "moni@gmail.com",
+      "password": "moni_20",
+      "id": 21
+    },
+    {
+      "name": "rakshi",
+      "email": "rakshi@gmail.com",
+      "password": "4827",
+      "id": 22
+    }
+  ]
+}
