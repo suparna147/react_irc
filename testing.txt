@@ -1,0 +1,879 @@
+1. ixigo
+
+
+package Ixigo_Test;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.EventHandler;
+
+public class AppTest {
+        private static final long PAGE_LOAD_TIME = 10;
+
+    @Test
+
+    public void test() throws InterruptedException, MalformedURLException {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/"),
+        chromeOptions);
+        driver.manage().window().maximize();
+        driver.get("https://www.ixigo.com");
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIME));
+        WebDriverListener listener = new EventHandler();
+        driver = new EventFiringDecorator<>(listener).decorate(driver);
+        Thread.sleep(5000);
+        WebElement RoundTrip = driver.findElement(By.cssSelector(
+                "body > main > div.max-w-\\[1240px\\].m-auto.mainContainer > div.pt-30.mx-0.relative.px-20.xl\\:px-0 > div.border-none.shadow-500.p-20.flex.flex-col.gap-10.rounded-20.bg-white.undefined > div.flex.justify-between.items-center > div.flex.flex-col > div > button.flex.items-center.relative.transition-all.min-h-\\[40px\\].py-5.border.rounded-full.px-15.text-primary.hover\\:bg-primary-over.border-secondary.hover\\:bg-subbrand-50"));
+        RoundTrip.click();
+
+        Thread.sleep(2000);
+        WebElement From = driver
+                .findElement(By.xpath("/html/body/main/div[2]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div"));
+        From.click();
+        Thread.sleep(2000);
+        WebElement FromCity = driver
+                .findElement(By.xpath("/html/body/main/div[2]/div[1]/div[3]/div[2]/div[1]/div[1]/div[3]/div[2]/li"));
+        FromCity.click();
+        Thread.sleep(2000);
+        WebElement To = driver
+                .findElement(By.xpath("/html/body/main/div[2]/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div"));
+        To.click();
+        Thread.sleep(2000);
+        WebElement ToCity = driver
+                .findElement(By.xpath("/html/body/main/div[2]/div[1]/div[3]/div[2]/div[1]/div[2]/div[3]/div[3]/li"));
+        ToCity.click();
+
+        Thread.sleep(2000);
+        WebElement Depature = driver
+                .findElement(By.xpath("/html/body/main/div[2]/div[1]/div[3]/div[2]/div[2]/div[1]/div/div"));
+        Depature.click();
+        Thread.sleep(2000);
+        WebElement DepatureDate = driver.findElement(By.xpath(
+                "/html/body/main/div[2]/div[1]/div[3]/div[2]/div[2]/div[3]/div/div[1]/div[2]/div[1]/div/div/div[2]/button[3]"));
+        DepatureDate.click();
+        Thread.sleep(2000);
+        WebElement Return = driver
+                .findElement(By.xpath("/html/body/main/div[2]/div[1]/div[3]/div[2]/div[2]/div[2]/div/div[1]"));
+        Return.click();
+        Thread.sleep(2000);
+        WebElement ReturnDate = driver.findElement(By.xpath(
+                "/html/body/main/div[2]/div[1]/div[3]/div[2]/div[2]/div[3]/div/div[1]/div[2]/div[1]/div/div/div[2]/button[4]"));
+        ReturnDate.click();
+
+        Thread.sleep(2000);
+        WebElement TravelersClass = driver
+                .findElement(By.xpath("/html/body/main/div[2]/div[1]/div[3]/div[2]/div[3]/div[1]/div"));
+        TravelersClass.click();
+        Thread.sleep(2000);
+        WebElement TravelerAdult = driver.findElement(By.xpath(
+                "/html/body/main/div[2]/div[1]/div[3]/div[2]/div[3]/div[2]/div/div[1]/div[1]/div[2]/div/button[2]"));
+        TravelerAdult.click();
+        Thread.sleep(2000);
+        WebElement TravelerChild = driver.findElement(By.xpath(
+                "/html/body/main/div[2]/div[1]/div[3]/div[2]/div[3]/div[2]/div/div[1]/div[2]/div[2]/div/button[2]"));
+        TravelerChild.click();
+        Thread.sleep(2000);
+        WebElement Class = driver.findElement(
+                By.xpath("/html/body/main/div[2]/div[1]/div[3]/div[2]/div[3]/div[2]/div/div[1]/div[5]/div/div[3]"));
+        Class.click();
+        Thread.sleep(2000);
+        WebElement Done = driver
+                .findElement(By.xpath("/html/body/main/div[2]/div[1]/div[3]/div[2]/div[3]/div[2]/div/div[2]/button"));
+        Done.click();
+
+        Thread.sleep(2000);
+        WebElement Search = driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/div[3]/div[2]/button"));
+        Search.click();
+
+        Thread.sleep(5000);
+        driver.quit();
+    }
+
+}
+
+
+2.selenium basics
+
+
+package com.example;
+
+import java.net.URL;
+
+
+import java.net.MalformedURLException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class AppTest {
+    public WebDriver driver;
+
+    @BeforeMethod
+    public void before() throws Exception{
+        ChromeOptions co = new ChromeOptions();
+        driver = new RemoteWebDriver(new URL("http://localhost:4444"), co);
+    }
+    
+    
+    @Test
+    public  void shouldAnswerWithTrue() throws Exception{
+        
+        driver.get("https://www.shoppersstop.com/");
+        driver.manage().window().maximize();
+        Thread.sleep(3000);
+        String pageTitle = driver.getTitle();
+        System.out.println("Title of the page: " + pageTitle);
+        Thread.sleep(3000);
+        String pageSource = driver.getPageSource();
+        
+        int pageSourceLength = pageSource.length();
+        System.out.println("Length of the page source: " + pageSourceLength);
+        Thread.sleep(3000);
+        
+        driver.get("https://www.google.com");
+        Thread.sleep(3000);
+
+        driver.navigate().back();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "https://www.shoppersstop.com/";
+        if (currentUrl.equals(expectedUrl)) {
+            System.out.println("Current URL matches with ShoppersStop URL.");
+        } else {
+            System.out.println("Current URL does not match with ShoppersStop URL.");
+        }
+
+        driver.quit();
+    }
+}
+
+
+3.opentable
+
+package Opentable_Test;
+
+
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import java.util.Set;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import utils.EventHandler;
+
+
+public class OpenTableTest {
+    public static WebDriver driver;
+    @SuppressWarnings("unused")
+    private WebDriverWait wait;
+    public final int IMPLICIT_WAIT_TIME=10;
+    public final int PAGE_LOAD_TIME=5;
+    
+
+ @BeforeMethod
+    public WebDriver beforeMethod() throws MalformedURLException {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/"), chromeOptions);
+        driver.get("https://www.opentable.com");
+        driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        //driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIME));
+        WebDriverListener listener = new EventHandler();
+        driver = new EventFiringDecorator<>(listener).decorate(driver);
+        return driver;
+        
+    }
+    @Test
+    public void opent() throws InterruptedException {
+        Thread.sleep(10000);
+        int numberOfArrowDownPresses = 3;
+        int dropdown = 2;
+        int timedropdown = 1;
+
+        WebElement inputbox = driver.findElement(By.xpath("//input[@placeholder='Location, Restaurant, or Cuisine']"));
+        inputbox.click();
+        inputbox.sendKeys("Bangalore");
+
+        for (int i = 0; i < numberOfArrowDownPresses; i++) {
+            inputbox.sendKeys(Keys.ARROW_DOWN);
+        }
+
+        WebElement Letsgo = driver.findElement(By.xpath("/html/body/div[1]/div/div/main/header/div/span/div/div/div[2]/div[2]/button"));
+            Letsgo.click();
+        WebElement hotel = driver.findElement(By.xpath("/html/body/div[1]/div/div/main/div/div/div[2]/div[1]/div[2]/div[1]/div[1]/a/h6"));
+            hotel.click();
+
+        String parentWindowHandle = driver.getWindowHandle();
+        Thread.sleep(3000);
+        WebElement imageElement = driver
+                .findElement(By.xpath("//*[@id='mainContent']/div/div/div[2]/div/div[1]/a/img"));
+        imageElement.click();
+
+        System.out.println("CLicked First Hotel");
+
+        Set<String> windowHandles = driver.getWindowHandles();
+        for (String windowHandle : windowHandles) {
+            if (!windowHandle.equals(parentWindowHandle)) {
+                driver.switchTo().window(windowHandle);
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("window.scrollBy(0, 300);");
+                break;
+            }
+        }
+
+        WebElement partySizeDropdown = driver
+                .findElement(By.xpath("//select[@id='restProfileSideBarDtpPartySizePicker']"));
+        partySizeDropdown.click();
+
+        try {
+            for (int i = 0; i < dropdown; i++) {
+                partySizeDropdown.sendKeys(Keys.ARROW_DOWN);
+            }
+            partySizeDropdown.sendKeys(Keys.ENTER);
+        } catch (Exception e) {
+
+        }
+        System.out.println("CLicked 4 persons");
+        try {
+            WebElement datePicker = driver.findElement(By.xpath("//*[@id='restProfileSideBarDtpDayPicker-label']"));
+            datePicker.click();
+            WebElement dateElement = driver.findElement(By.xpath(
+                    "//*[@id='restProfileSideBarDtpDayPicker-wrapper']/div/div/div/table/tbody/tr[6]/td[7]/button"));
+            dateElement.click();
+            System.out.println("CLicked nov 14th date");
+
+        } catch (Exception e) {
+
+        }
+
+        // Time picker
+        try {
+            WebElement timePicker = driver.findElement(By.xpath("//*[@id='restProfileSideBartimePickerDtpPicker']"));
+            timePicker.click();
+
+            try {
+                for (int i = 0; i < timedropdown; i++) {
+                    timePicker.sendKeys(Keys.ARROW_UP);
+                }
+                timePicker.sendKeys(Keys.ENTER);
+            } catch (Exception e) {
+
+            }
+
+            System.out.println("CLicked 6:30pm");
+
+            WebElement findatime = driver
+                    .findElement(By.xpath("//*[@id='mainContent']/div/div[2]/div[2]/div/article/div/div[5]/button"));
+            findatime.click();
+            System.out.println("CLicked Find a Time btn");
+        } catch (Exception e) {
+
+        }
+        WebElement signinclick = driver.findElement(By.xpath("/html/body/div[1]/div/div/header/div[2]/div[2]/div[1]/button"));
+        signinclick.click();
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        driver.quit();
+    }
+
+}
+
+4.Economictimes
+
+package economic;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import jdk.internal.org.jline.utils.Log;
+import java.util.List;
+import java.util.Set;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.EventHandler;
+
+
+public class TestEconomic {
+	public static WebDriver driver;
+    private WebDriverWait wait;
+	public final int IMPLICIT_WAIT_TIME=10;
+	public final int PAGE_LOAD_TIME=10;
+    
+	 @BeforeMethod
+	    public void beforeMethod() throws MalformedURLException  {
+	        ChromeOptions chromeOptions = new ChromeOptions();
+			driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
+	        driver.manage().window().maximize();
+	        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	        driver.get("https://economictimes.indiatimes.com/et-now/results");
+	        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	        WebDriverListener listener = new EventHandler();
+	        driver = new EventFiringDecorator<>(listener).decorate(driver);
+			System.out.println("Browser");
+	    }
+
+		@Test
+		public void main() throws InterruptedException
+		{
+			driver.findElement(By.xpath("//*[@id=\"topnav\"]/div[10]/a")).click();
+			Thread.sleep(10000);
+			JavascriptExecutor JS=(JavascriptExecutor)driver;
+        	JS.executeScript("window.scrollBy(0,1000)", "");
+			driver.findElement(By.id("amcSelection")).click();
+			Thread.sleep(5000);
+			Select S=new Select(driver.findElement(By.id("amcSelection")));
+        	S.selectByVisibleText("Canara Robeco");
+			Thread.sleep(5000);
+			driver.findElement(By.id("schemenm")).click();
+			Thread.sleep(5000);
+			Select Se=new Select(driver.findElement(By.id("schemenm")));
+        	Se.selectByVisibleText("Canara Robeco Bluechip Equity Direct-G");
+			Thread.sleep(5000);
+			driver.findElement(By.id("anchor3")).click();
+			Thread.sleep(15000);
+
+			String currentTab = driver.getWindowHandle();
+        for (String tab : driver.getWindowHandles()) {
+            if (!tab.equals(currentTab)) {
+                driver.switchTo().window(tab);
+                break;
+            }
+        }
+
+			WebElement dropdownContainer = driver.findElement(By.xpath("/html/body/main/div[10]/section[1]/div/div[2]/div[1]/div[2]/ul/li/span"));
+        dropdownContainer.click();
+
+        WebElement Options = dropdownContainer.findElement(By.xpath("/html/body/main/div[10]/section[1]/div/div[2]/div[1]/div[2]/ul/li/ul/li[1]"));
+        Options.click();
+        Thread.sleep(2000);
+        WebElement Container = driver.findElement(By.xpath("/html/body/main/div[10]/section[1]/div/div[2]/div[1]/div[3]/ul/li/span"));
+        Container.click();
+        
+        WebElement Option = dropdownContainer.findElement(By.xpath("/html/body/main/div[10]/section[1]/div/div[2]/div[1]/div[3]/ul/li/ul/li[3]/span"));
+        Option.click();
+
+        Thread.sleep(2000);
+
+        WebElement Contain= driver.findElement(By.xpath("/html/body/main/div[10]/section[1]/div/div[2]/div[1]/div[4]/ul/li/span"));
+        Contain.click();
+
+        WebElement Opt = dropdownContainer.findElement(By.xpath("/html/body/main/div[10]/section[1]/div/div[2]/div[1]/div[4]/ul/li/ul/li[4]/span"));
+        Opt.click();
+
+		WebElement returns= driver.findElement(By.xpath("/html/body/main/div[10]/section[3]/div/ul/li[2]"));
+		returns.click();
+		Thread.sleep(5000);
+
+		WebElement printthis=driver.findElement(By.xpath("/html/body/main/div[10]/section[5]/div/div[1]/section[1]/div[2]/div[2]/ul/li[1]/table/tbody/tr[1]"));
+		System.out.println(printthis.getText());
+		}
+		
+		@AfterMethod
+	public void afterMethod() throws InterruptedException {
+		Thread.sleep(15000);
+		driver.quit();
+	}
+}
+
+5.puriresort
+
+package PuriesHotel_Test;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import ch.qos.logback.core.joran.action.Action;
+import utils.*;
+
+
+//Portal Code
+public class AppTest {
+
+    public WebDriver driver;
+    public final int IMPLICIT_WAIT_TIME = 10;
+    public final int PAGE_LOAD_TIME = 5;
+    // WebDriverHelper helper = new WebDriverHelper(driver);
+    ExtentSparkReporter sparkReporter;
+    ExtentReports extent;
+    ExtentTest test;
+
+    @BeforeMethod
+    public void startUp() throws MalformedURLException {
+        DesiredCapabilities dc = new DesiredCapabilities();
+        dc.setBrowserName("chrome");
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/"), dc);
+
+        driver.manage().window().maximize();
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT_TIME));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIME));
+
+        driver.get("https://www.puriholidayresort.com/");
+
+        WebDriverListener listener = new EventHandler();
+        driver = new EventFiringDecorator<>(listener).decorate(driver);
+
+        sparkReporter = new ExtentSparkReporter("./reports/PuriHoli.html");
+        extent = new ExtentReports();
+        extent.attachReporter(sparkReporter);
+        
+        test = extent.createTest("HolyResort");
+        driver.manage().window().maximize();
+
+
+        // WebDriverListener listener = new EventHandler();
+        // driver = new EventFiringDecorator<>(listener).decorate(driver);
+    }
+
+    @Test(priority = 0)
+    public void test1() throws Exception {
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//button[@type='button']")).click();
+
+        driver.findElement(By.xpath("//input[@id='arr_datepicker']")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//a[@class='ui-state-default' and contains(text(),'30')]")).click();
+
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//button[@class='custom-btn']")).click();
+    }
+
+    @Test(priority = 1)
+    public void test2() throws Exception {
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//button[@type='button']")).click();
+
+        Thread.sleep(3000);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(By.xpath("//li[2]/a[contains(text(),'Rooms & Suites')]"))).build()
+                .perform();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//a[contains(text(),'Royal Suite')]")).click();
+
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//h3[contains(text(),'AMENITIES')]")).click();
+    }
+
+    @Test(priority = 2)
+    public void test3() throws Exception {
+        Thread.sleep(3000);
+        By continLocator = By.xpath(
+                "//textarea[contains(text(),'Title your review - Describe your stay in one sentence or less. ')]");
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//button[@type='button']")).click();
+
+        Thread.sleep(3000);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(By.xpath("//li[1]/a[contains(text(),'About Puri')]"))).build()
+                .perform();
+
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//a[contains(text(),'Chilika Lake')]")).click();
+
+        Thread.sleep(4000);
+        driver.findElement(continLocator).click();
+        driver.findElement(continLocator).sendKeys("Excellent");
+
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//input[@value='Continue']")).click();
+
+        String originalWindow = driver.getWindowHandle();
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!originalWindow.contentEquals(windowHandle)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//span[contains(text(),'Family')]")).click();
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        driver.quit();
+    }
+
+    @AfterTest
+    public void setupreport() {
+        extent.flush();
+    }
+}
+
+pom.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.max</groupId>
+  <artifactId>holiday</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>holiday</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+
+
+    <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>5.1.1</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+    <dependency>
+
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>5.4.1</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>2.0.7</version>
+      <scope>test</scope>
+    </dependency>
+
+
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.11.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.14.1</version> <!-- Use the appropriate version -->
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.14.1</version> <!-- Use the appropriate version -->
+    </dependency>
+
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.8.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version> <!-- Replace with your Log4j version -->
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to
+      parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see
+        https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see
+        https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <!-- site lifecycle, see
+        https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
+
+8. opentable
+
+
+package Opentable_Test;
+
+
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import java.util.Set;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import utils.EventHandler;
+
+
+public class OpenTableTest {
+    public static WebDriver driver;
+    @SuppressWarnings("unused")
+    private WebDriverWait wait;
+    public final int IMPLICIT_WAIT_TIME=10;
+    public final int PAGE_LOAD_TIME=5;
+    
+
+ @BeforeMethod
+    public WebDriver beforeMethod() throws MalformedURLException {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/"), chromeOptions);
+        driver.get("https://www.opentable.com");
+        driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        //driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIME));
+        WebDriverListener listener = new EventHandler();
+        driver = new EventFiringDecorator<>(listener).decorate(driver);
+        return driver;
+        
+    }
+    @Test
+    public void opent() throws InterruptedException {
+        Thread.sleep(10000);
+        int numberOfArrowDownPresses = 3;
+        int dropdown = 2;
+        int timedropdown = 1;
+
+        WebElement inputbox = driver.findElement(By.xpath("//input[@placeholder='Location, Restaurant, or Cuisine']"));
+        inputbox.click();
+        inputbox.sendKeys("Bangalore");
+
+        for (int i = 0; i < numberOfArrowDownPresses; i++) {
+            inputbox.sendKeys(Keys.ARROW_DOWN);
+        }
+
+        WebElement Letsgo = driver.findElement(By.xpath("/html/body/div[1]/div/div/main/header/div/span/div/div/div[2]/div[2]/button"));
+            Letsgo.click();
+        WebElement hotel = driver.findElement(By.xpath("/html/body/div[1]/div/div/main/div/div/div[2]/div[1]/div[2]/div[1]/div[1]/a/h6"));
+            hotel.click();
+
+        String parentWindowHandle = driver.getWindowHandle();
+        Thread.sleep(3000);
+        WebElement imageElement = driver
+                .findElement(By.xpath("//*[@id='mainContent']/div/div/div[2]/div/div[1]/a/img"));
+        imageElement.click();
+
+        System.out.println("CLicked First Hotel");
+
+        Set<String> windowHandles = driver.getWindowHandles();
+        for (String windowHandle : windowHandles) {
+            if (!windowHandle.equals(parentWindowHandle)) {
+                driver.switchTo().window(windowHandle);
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("window.scrollBy(0, 300);");
+                break;
+            }
+        }
+
+        WebElement partySizeDropdown = driver
+                .findElement(By.xpath("//select[@id='restProfileSideBarDtpPartySizePicker']"));
+        partySizeDropdown.click();
+
+        try {
+            for (int i = 0; i < dropdown; i++) {
+                partySizeDropdown.sendKeys(Keys.ARROW_DOWN);
+            }
+            partySizeDropdown.sendKeys(Keys.ENTER);
+        } catch (Exception e) {
+
+        }
+        System.out.println("CLicked 4 persons");
+        try {
+            WebElement datePicker = driver.findElement(By.xpath("//*[@id='restProfileSideBarDtpDayPicker-label']"));
+            datePicker.click();
+            WebElement dateElement = driver.findElement(By.xpath(
+                    "//*[@id='restProfileSideBarDtpDayPicker-wrapper']/div/div/div/table/tbody/tr[6]/td[7]/button"));
+            dateElement.click();
+            System.out.println("CLicked nov 14th date");
+
+        } catch (Exception e) {
+
+        }
+
+        // Time picker
+        try {
+            WebElement timePicker = driver.findElement(By.xpath("//*[@id='restProfileSideBartimePickerDtpPicker']"));
+            timePicker.click();
+
+            try {
+                for (int i = 0; i < timedropdown; i++) {
+                    timePicker.sendKeys(Keys.ARROW_UP);
+                }
+                timePicker.sendKeys(Keys.ENTER);
+            } catch (Exception e) {
+
+            }
+
+            System.out.println("CLicked 6:30pm");
+
+            WebElement findatime = driver
+                    .findElement(By.xpath("//*[@id='mainContent']/div/div[2]/div[2]/div/article/div/div[5]/button"));
+            findatime.click();
+            System.out.println("CLicked Find a Time btn");
+        } catch (Exception e) {
+
+        }
+        WebElement signinclick = driver.findElement(By.xpath("/html/body/div[1]/div/div/header/div[2]/div[2]/div[1]/button"));
+        signinclick.click();
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        driver.quit();
+    }
+
+}
+
+
+9.
+
+10.
+
+
+
+
